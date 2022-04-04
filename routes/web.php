@@ -28,4 +28,9 @@ Route::prefix('indicacao')->group(function () {
         '/getAll',
         [IndicacaoController::class, 'getAll']
     )->name("indicacao.getAll");
+
+    Route::delete(
+        'delete/{id}',
+        [IndicacaoController::class, 'delete']
+    )->name('indicacao.delete');
 });

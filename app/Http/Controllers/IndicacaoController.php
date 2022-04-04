@@ -21,7 +21,7 @@ class IndicacaoController extends Controller
             return $this->responseJSON($result->errors()->all(), 400);
         }
 
-        $result = $this->checkIfCpfExists();
+        $result = $this->checkIfCpfExists($request->input("cpf"));
         if ($result) {
             return $this->responseJSON("Este CPF já foi indicado!", 500);
         }
@@ -57,5 +57,16 @@ class IndicacaoController extends Controller
     
     public function getAll() {
         return Indicacoes::all();
+    }
+
+    public function delete($id) {
+        $indicacao = Indicacoes::find($id);
+
+        if ($indicacao) {
+            $indicacao->delete();
+            return $this->responseJSON("Registro deletado com sucesso!", 200);
+        }
+
+        return $this->responseJSON("Não foi possível deletar registro!", 500);
     }
 }
