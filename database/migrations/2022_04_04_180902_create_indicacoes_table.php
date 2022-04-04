@@ -19,7 +19,7 @@ class CreateIndicacoesTable extends Migration
             $table->char('cpf', 11);
             $table->char('telefone', 15);
             $table->string('email', 255);
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->foreign('status_id')->references('id')->on('status_indicacao');
             $table->timestamps();
         });

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Indicacoes extends Model
 {
     use HasFactory;
+    protected $table = 'indicacoes';
+    protected $fillable = [
+        'nome',
+        'cpf',
+        'telefone',
+        'email',
+    ];
 }
