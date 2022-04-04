@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndicacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('indicacao')->group(function () {
+    Route::post(
+        '/create', 
+        [IndicacaoController::class, 'create']
+    )->name("indicacao.create");
+
+    Route::get(
+        '/getAll',
+        [IndicacaoController::class, 'getAll']
+    )->name("indicacao.getAll");
 });

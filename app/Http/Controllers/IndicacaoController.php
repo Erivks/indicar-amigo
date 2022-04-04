@@ -54,4 +54,8 @@ class IndicacaoController extends Controller
     public function checkIfCpfExists(String $cpf) {
         return Indicacoes::where('cpf', '=', $cpf)->first();
     }
+    
+    public function getAll() {
+        return Indicacoes::all();
+    }
 }
