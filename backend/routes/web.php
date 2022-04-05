@@ -14,10 +14,6 @@ use App\Http\Controllers\IndicacaoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('indicacao')->group(function () {
     Route::post(
         '/create', 
@@ -30,7 +26,12 @@ Route::prefix('indicacao')->group(function () {
     )->name("indicacao.getAll");
 
     Route::delete(
-        'delete/{id}',
+        '/delete/{id}',
         [IndicacaoController::class, 'delete']
     )->name('indicacao.delete');
+
+    Route::put(
+        '/updateByID/{id}',
+        [IndicacaoController::class, 'updateByID']
+    )->name('indicacao.update');
 });
